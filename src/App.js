@@ -55,6 +55,8 @@ class App extends Component {
 
     return (
       <div className='App'>
+        <h1 className='app-title'>Robodex</h1>
+
         <SearchBar
           className='monsters-search-bar'
           placeholder='search monster'
