@@ -1,6 +1,7 @@
 import {Component} from 'react';
 
 import CardList from "./components/card-list/card-list.component";
+import SearchBar from "./components/search-bar/search-bar.component";
 import './App.css';
 
 class App extends Component {
@@ -15,7 +16,7 @@ class App extends Component {
       monsters: [],
       searchField: ''
     };
-    console.log('construct')
+    console.log('construct');
   }
 
   // Invoked immediately after a component is placed on the DOM
@@ -41,7 +42,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('render')
+    console.log('render');
 
     // Destructuring
     const {monsters, searchField} = this.state;
@@ -54,80 +55,15 @@ class App extends Component {
 
     return (
       <div className='App'>
-        {/*Search Bar*/}
-        <input
-          className='search-box'
-          type='search'
+        <SearchBar
+          className='search-bar'
           placeholder='search monster'
-          onChange={onSearchChange}
-        />
-        {
-          filteredMonsters.map((monster) => {
-            return (
-              // unique key to differentiate components efficiently
-              // when re-rendering
-              <div key={monster.id}>
-                <h1>{monster.name}</h1>
-              </div>
-            )
-          })
-        }
-        <CardList/>
+          onChangeHandler={onSearchChange}/>
+
+        <CardList monsters={filteredMonsters}/>
       </div>
-    )
+    );
   }
 }
-
-// class App extends Component {
-//   constructor() {
-//     super();
-//
-//     // initializing local state in
-//     // a json object
-//     this.state = {
-//       name: {firstName: 'Tong', lastName: 'Lay'},
-//       company: 'SDSU'
-//     };
-//   }
-//
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo"/>
-//           <p>
-//             Hello, my name is {this.state.name.firstName} {this.state.name.lastName}
-//           </p>
-//           <button
-//             onClick={() => {
-//               // Shallow merge into current state -> new state object
-//               // check through state object if there's the same key (name)
-//               // and update its value
-//               // Occurs asynchronously
-//               // this.setState({name: {firstName: 'Eug', lastName: 'Not'}})
-//               // The state is not updated here
-//               // console.log(this.state)
-//
-//               // Pass a function instead of directly setState
-//               this.setState(
-//                 () => {
-//                   return {
-//                     name: {firstName: 'Eug', lastName: 'Not'}
-//                   }
-//                 },
-//                 // callback function (optional)
-//                 // once all state changes have been applied, run it
-//                 () => {
-//                   console.log(this.state)
-//                 })
-//             }}
-//           >
-//             Change Name
-//           </button>
-//         </header>
-//       </div>
-//     );
-//   }
-// }
 
 export default App;
