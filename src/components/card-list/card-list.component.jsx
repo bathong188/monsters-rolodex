@@ -9,15 +9,13 @@ class CardList extends Component {
 
     return (
       <div className='card-list'>
-        <div className='card-list'>
-          {
-            monsters.map((monster) => {
-              return (
-                <Card monster={monster}/>
-              );
-            })
-          }
-        </div>
+        {
+          monsters.map((monster) => {
+            return (
+              <Card monster={monster}/>
+            );
+          })
+        }
       </div>
     );
   }
